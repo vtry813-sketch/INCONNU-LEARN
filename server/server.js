@@ -9,7 +9,9 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../build')));
+
+// Servir les fichiers statiques depuis "public"
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Database connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -19,19 +21,19 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('MongoDB connected successfully'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// Routes
+// Routes API
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/levels', require('./routes/levels'));
 app.use('/api/coins', require('./routes/coins'));
 app.use('/api/admin', require('./routes/admin'));
 
-// Serve React app for all other routes
+// Servir index.html pour toutes les autres routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// Error handling middleware
+// Middleware d'erreur
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
