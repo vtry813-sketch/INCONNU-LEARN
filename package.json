@@ -1,16 +1,12 @@
 {
-  "name": "inconnu-learn",
+  "name": "inconnu-learn-backend",
   "version": "1.0.0",
-  "description": "INCONNU LEARN - JavaScript learning platform",
-  "main": "server/server.js",
+  "description": "Backend for INCONNU LEARN - JavaScript learning platform",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
-    "build": "cd client && npm install && npm run build",
-    "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "client": "cd client && npm start",
-    "dev-all": "concurrently \"npm run server\" \"npm run client\""
+    "build": "echo 'No build process for backend'"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -24,20 +20,9 @@
     "passport-github2": "^0.1.12"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "concurrently": "^7.6.0"
+    "nodemon": "^2.0.20"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "keywords": [
-    "javascript",
-    "learning",
-    "education",
-    "react",
-    "nodejs",
-    "mongodb"
-  ],
+  "keywords": ["javascript", "learning", "education", "nodejs", "mongodb"],
   "author": "Inconnu Boy",
   "license": "MIT"
-  }
+}
