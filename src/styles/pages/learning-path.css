@@ -1,0 +1,373 @@
+.learning-path {
+  min-height: 100vh;
+  background: var(--background-darker);
+  padding: 2rem 0;
+}
+
+.learning-path-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.learning-path-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.learning-path-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Path Stats */
+.path-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Difficulty Breakdown */
+.difficulty-breakdown {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.difficulty-breakdown h3 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.difficulty-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.difficulty-bar {
+  display: grid;
+  grid-template-columns: 100px 1fr 60px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.difficulty-bar .label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.difficulty-bar .bar {
+  height: 8px;
+  background: var(--background-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.difficulty-bar .fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.difficulty-bar.beginner .fill {
+  background: var(--secondary-color);
+}
+
+.difficulty-bar.intermediate .fill {
+  background: var(--accent-color);
+}
+
+.difficulty-bar.advanced .fill {
+  background: var(--danger-color);
+}
+
+.difficulty-bar.expert .fill {
+  background: var(--primary-color);
+}
+
+.difficulty-bar .count {
+  text-align: right;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Filters */
+.path-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* Levels Grid */
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Level Card Styles */
+.level-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.level-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.level-card:hover::before {
+  transform: scaleX(1);
+}
+
+.level-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.level-card.locked {
+  opacity: 0.7;
+  background: var(--background-light);
+}
+
+.level-card.completed {
+  border-color: var(--secondary-color);
+}
+
+.level-card.completed::before {
+  background: var(--secondary-color);
+  transform: scaleX(1);
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.level-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--background-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.level-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.level-badge.completed {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.level-badge.locked {
+  background: var(--text-muted);
+  color: white;
+}
+
+.level-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.level-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.level-difficulty {
+  margin-bottom: 1rem;
+}
+
+.difficulty-beginner {
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.difficulty-intermediate {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.difficulty-advanced {
+  color: var(--danger-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.difficulty-expert {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.level-reward {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.level-reward img {
+  width: 16px;
+  height: 16px;
+}
+
+.level-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.level-actions .btn {
+  flex: 1;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Coins CTA */
+.coins-cta {
+  background: var(--gradient-primary);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.coins-cta-content h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.coins-cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .learning-path-header h1 {
+    font-size: 2rem;
+  }
+  
+  .path-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .levels-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .difficulty-bar {
+    grid-template-columns: 80px 1fr 40px;
+    gap: 0.5rem;
+  }
+  
+  .path-filters {
+    justify-content: center;
+  }
+}
