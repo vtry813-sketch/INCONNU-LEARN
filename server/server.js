@@ -10,8 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Servir les fichiers statiques depuis "public"
-app.use(express.static(path.join(__dirname, '../public')));
+// Servir les fichiers statiques depuis "build" (React compilé)
+app.use(express.static(path.join(__dirname, '../build')));
 
 // Database connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -28,9 +28,9 @@ app.use('/api/levels', require('./routes/levels'));
 app.use('/api/coins', require('./routes/coins'));
 app.use('/api/admin', require('./routes/admin'));
 
-// Servir index.html pour toutes les autres routes
+// Servir index.html pour toutes les autres routes (SPA)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 // Middleware d'erreur
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
